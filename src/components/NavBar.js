@@ -4,7 +4,7 @@ import whiteLogo from '../images/whiteLogo.png'
 import favorite from '../icons/favorite.svg'
 import shopping_basket from '../icons/shopping_basket.svg'
 
-function Navbar() {
+function Navbar({count_favorite}) {
   const { isAuthenticated, loginWithRedirect, logout, user } = useAuth0();
 
   return (
@@ -20,28 +20,39 @@ function Navbar() {
           <Link to="/about" className="block mt-4 lg:inline-block lg:mt-0 text-black hover:text-gray-400 mr-4">
             About
           </Link>
+          <Link to="/product" className="block mt-4 lg:inline-block lg:mt-0 text-black hover:text-gray-400 mr-4">
+            Our product
+          </Link>
+          <Link to="/Contact" className="block mt-4 lg:inline-block lg:mt-0 text-black hover:text-gray-400 mr-4">
+            Contact Us
+          </Link>
           {isAuthenticated && (
-            <Link to="/dashboard" className="block mt-4 lg:inline-block lg:mt-0 text-black hover:text-gray-400">
-              Dashboard
+            <Link to="/profile" className="block mt-4 lg:inline-block lg:mt-0 text-black hover:text-gray-400">
+            My account
             </Link>
           )}
         </div>
         <div className='flex justify-end items-end gap-4'>
-          <Link to="/" className="flex flex-col">
-            <img
-              src={shopping_basket}
-              alt='shopping_basket'
-              className="mx-2 transition duration-300 transform hover:scale-150"
-            />
-          </Link>
-          <Link to="/" className="flex flex-col">
-            <p className='flex justify-end items-end text-red-400'>0</p>
-            <img
-              src={favorite}
-              alt='favorite'
-              className="mx-2 transition duration-300 transform hover:scale-150"
-            />
-          </Link>
+          {isAuthenticated && (
+            <Link to="/" className="flex flex-col">
+              <p className='flex justify-end items-end text-red-400'>{0}</p>
+              <img
+                src={shopping_basket}
+                alt='shopping_basket'
+                className="mx-2 transition duration-300 transform hover:scale-150"
+              />
+            </Link>
+          )}
+          {isAuthenticated && (
+            <Link to="/" className="flex flex-col">
+              <p className='flex justify-end items-end text-red-400'>{count_favorite}</p>
+              <img
+                src={favorite}
+                alt='favorite'
+                className="mx-2 transition duration-300 transform hover:scale-150"
+              />
+            </Link>
+          )}
           {isAuthenticated ? (
             <div className="flex items-center">
               <div className='flex flex-col items-center'>

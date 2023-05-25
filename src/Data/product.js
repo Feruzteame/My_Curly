@@ -1,0 +1,130 @@
+
+import product1 from '../images/product-1.png'
+import product2 from '../images/product-2.png'
+import product3 from '../images/product-3.png'
+import product4 from '../images/product-4.png'
+import product5 from '../images/product-5.png'
+
+let allProducts = [
+    {
+      id: 1,
+      name: 'Product 1',
+      price: 9.99,
+      description: 'This is a description for product 1.',
+      image: product1,
+      isFavorite: true,
+    },
+    {
+      id: 2,
+      name: 'Product 2',
+      price: 19.99,
+      description: 'This is a description for product 2.',
+      image: product2,
+      isFavorite: false,
+    },
+    {
+      id: 3,
+      name: 'Product 3',
+      price: 29.99,
+      description: 'This is a description for product 3.',
+      image: product3,
+      isFavorite: false,
+    },
+    {
+      id: 4,
+      name: 'Product 3',
+      price: 29.99,
+      description: 'This is a description for product 3.',
+      image: product4,
+      isFavorite: false,
+    },
+    {
+      id: 5,
+      name: 'Product 3',
+      price: 29.99,
+      description: 'This is a description for product 3.',
+      image: product5,
+      isFavorite: false,
+    },
+     {
+      id: 6,
+      name: 'Product 1',
+      price: 9.99,
+      description: 'This is a description for product 1.',
+      image: product1,
+      isFavorite: true,
+    },
+    {
+      id: 7,
+      name: 'Product 2',
+      price: 19.99,
+      description: 'This is a description for product 2.',
+      image: product2,
+      isFavorite: false,
+    },
+    {
+      id: 8,
+      name: 'Product 3',
+      price: 29.99,
+      description: 'This is a description for product 3.',
+      image: product3,
+      isFavorite: false,
+    },
+    {
+      id: 9,
+      name: 'Product 3',
+      price: 29.99,
+      description: 'This is a description for product 3.',
+      image: product4,
+      isFavorite: false,
+    },
+    {
+      id: 10,
+      name: 'Product 3',
+      price: 29.99,
+      description: 'This is a description for product 3.',
+      image: product5,
+      isFavorite: false,
+    },
+     {
+      id: 11,
+      name: 'Product 1',
+      price: 9.99,
+      description: 'This is a description for product 1.',
+      image: product1,
+      isFavorite: true,
+    },
+    {
+      id: 12,
+      name: 'Product 2',
+      price: 19.99,
+      description: 'This is a description for product 2.',
+      image: product2,
+      isFavorite: false,
+    },
+    {
+      id: 13,
+      name: 'Product 3',
+      price: 29.99,
+      description: 'This is a description for product 3.',
+      image: product3,
+      isFavorite: false,
+    },
+    {
+      id: 14,
+      name: 'Product 3',
+      price: 29.99,
+      description: 'This is a description for product 3.',
+      image: product4,
+      isFavorite: false,
+    },
+    {
+      id: 15,
+      name: 'Product 3',
+      price: 29.99,
+      description: 'This is a description for product 3.',
+      image: product5,
+      isFavorite: false,
+    },
+  ]
+export default allProducts;
