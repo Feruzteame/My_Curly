@@ -4,7 +4,6 @@ import allProducts from '../Data/product';
 
 const ProductsCard = ({setCounterFavorite}) => {
   const [products, setProducts] = useState(allProducts);
-  
 
   const handleFavoriteChange = (productId, isFavorite) => {
     setCounterFavorite(count_favorite => isFavorite ? count_favorite + 1 : count_favorite - 1)

@@ -30,7 +30,7 @@ const Product = ({ name, price, description, image, isFavorite, onFavoriteChange
             )}
           </button>
         </div>
-        <button className='bg-[#ff583e] text-black rounded px-4 py-2 mt-10'>Add To Cart</button>
+        <button className='bg-[#ff583e] text-black rounded px-4 py-2 mt-10 w-full'>Add To Cart</button>
       </div>
     </div>
   );

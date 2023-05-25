@@ -4,17 +4,18 @@ import { CarouselProvider, Slider, Slide } from "pure-react-carousel";
 import "pure-react-carousel/dist/react-carousel.es.css";
 import Image1 from "../images/hero1.jpg";
 import Image2 from "../images/hero2.jpg";
+import Image3 from '../images/hero3.jpg'
 
 function Hero() {
   return (
     <div className="relative">
       <CarouselProvider
         naturalSlideWidth={1200}
-        naturalSlideHeight={500}
-        totalSlides={2}
+        naturalSlideHeight={600}
+        totalSlides={3}
         isPlaying={true}
-        interval={5000}
-        infinite={false}
+        interval={3000}
+        infinite={true}
       >
         <Slider>
           <Slide index={0}>
@@ -28,6 +29,13 @@ function Hero() {
             <img
               src={Image2}
               alt="Slide 2"
+              className="w-full object-cover"
+            />
+          </Slide>
+          <Slide index={3}>
+            <img
+              src={Image3}
+              alt="Slide 3"
               className="w-full object-cover"
             />
           </Slide>

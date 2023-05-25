@@ -14,20 +14,20 @@ function Navbar({count_favorite}) {
       </div>
       <div className="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
         <div className="text-sm lg:flex-grow">
-          <Link to="/" className="block mt-4 lg:inline-block lg:mt-0 text-black hover:text-gray-400 mr-4">
+          <Link to="/" className="block mt-4 lg:inline-block lg:mt-0 text-black hover:underline decoration-[#ff583e] decoration-2 mr-4">
             Home
           </Link>
-          <Link to="/about" className="block mt-4 lg:inline-block lg:mt-0 text-black hover:text-gray-400 mr-4">
+          <Link to="/about" className="block mt-4 lg:inline-block lg:mt-0 text-black hover:underline decoration-[#ff583e] decoration-2 mr-4">
             About
           </Link>
-          <Link to="/product" className="block mt-4 lg:inline-block lg:mt-0 text-black hover:text-gray-400 mr-4">
+          <Link to="/product" className="block mt-4 lg:inline-block lg:mt-0 text-black hover:underline decoration-[#ff583e] decoration-2 mr-4">
             Our product
           </Link>
-          <Link to="/Contact" className="block mt-4 lg:inline-block lg:mt-0 text-black hover:text-gray-400 mr-4">
+          <Link to="/Contact" className="block mt-4 lg:inline-block lg:mt-0 text-black hover:underline decoration-[#ff583e] decoration-2 mr-4">
             Contact Us
           </Link>
           {isAuthenticated && (
-            <Link to="/profile" className="block mt-4 lg:inline-block lg:mt-0 text-black hover:text-gray-400">
+            <Link to="/profile" className="block mt-4 lg:inline-block lg:mt-0 text-black hover:underline decoration-[#ff583e] decoration-2">
             My account
             </Link>
           )}

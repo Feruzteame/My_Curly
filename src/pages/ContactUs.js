@@ -3,16 +3,34 @@ import React from 'react';
 import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
 import contactImage from '../images/contact_us.png';
+import call from '../icons/call.svg';
+import email from '../icons/email.svg';
+import location from '../icons/location.svg'
 
 const Contact = () => {
   return (
     <div>
       <NavBar />
-      <div className="py-10">
+      <div className="flex flex-col gap-10 py-10">
         <h1 className='overline decoration-[#ff583e] decoration-2 text-3xl text-center'>Contact Us</h1>
+        <p className='text-center text-neutral-500 italic text-md'>We are happy to talk about your hair, Contact us and we will back as soon as possible.</p>
+        <div className='flex justify-center items-center gap-10'> 
+          <div className='flex flex-col justify-center items-center'>
+            <img src={call} alt='call'></img>
+            <p className='text-neutral-500 italic text-md'>0032467000</p>
+          </div>
+          <div className='flex flex-col justify-center items-center'>
+            <img src={email} alt='email'></img>
+            <p className='text-neutral-500 italic text-md'>MyCurly@hotmail.com</p>
+          </div>
+          <div className='flex flex-col justify-center items-center text-md'>
+            <img src={location} alt='location'></img>
+            <p className='text-neutral-500 italic'>Roeselare 8800, centrumstraat 22</p>
+          </div>
+        </div>
         <div className='flex justify-center items-center gap-10 w-full'>
           <div className=''>
-            <img src={contactImage} className='w-[400] h-[500px]'></img>
+            <img src={contactImage} alt='mobile' className='w-[400] h-[500px]'></img>
           </div>
           <form className='w-[400px]'>
             <div className="mb-4 w-full">
@@ -49,7 +67,7 @@ const Contact = () => {
               ></textarea>
             </div>
             <div className="text-center">
-              <button className='bg-[#ff583e] rounded w-auto px-10 py-2'> Send </button>
+              <button className='bg-[#ff583e] rounded w-full px-10 py-2'> Send </button>
             </div>
           </form>
         </div>
