@@ -8,12 +8,13 @@ import email from '../icons/email.svg';
 import location from '../icons/location.svg'
 
 const Contact = () => {
+
   return (
     <div>
       <NavBar />
       <div className="flex flex-col gap-10 py-10">
-        <h1 className='overline decoration-[#ff583e] decoration-2 text-3xl text-center'>Contact Us</h1>
-        <p className='text-center text-neutral-500 italic text-md'>We are happy to talk about your hair, Contact us and we will back as soon as possible.</p>
+        <h1 className='overline decoration-[#ff583e] decoration-2 text-3xl text-center'>Get in touch</h1>
+        <p className='text-center text-neutral-500 italic text-md'>Feel free to reach out to us through our contact page for any inquiries, feedback, or collaboration opportunities.</p>
         <div className='flex justify-center items-center gap-10'> 
           <div className='flex flex-col justify-center items-center'>
             <img src={call} alt='call'></img>

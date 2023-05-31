@@ -1,17 +1,57 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { useNavigate } from 'react-router-dom';
+
 import { FaHeart, FaRegHeart } from 'react-icons/fa';
+import { useAuth0 } from '@auth0/auth0-react';
+
+import Alert from './Alert'; // Import the Alert component
 
 const Product = ({ name, price, description, image, isFavorite, onFavoriteChange }) => {
   const [favorite, setFavorite] = useState(isFavorite);
+  const { isAuthenticated } = useAuth0();
+  const [showLoginMessage, setShowLoginMessage] = useState(false);
+  const [showAddToCartMessage, setShowAddToCartMessage] = useState(false);
+  const navigate = useNavigate();
 
   const toggleFavorite = () => {
-    setFavorite(!favorite);
-    onFavoriteChange(!favorite);
+    if (!isAuthenticated) {
+      setShowLoginMessage(true);
+    } else {
+      setFavorite(!favorite);
+      onFavoriteChange(!favorite);
+    }
+  };
+
+  const addToCart = () => {
+    if (!isAuthenticated) {
+      setShowAddToCartMessage(true);
+    } else {
+      const product = {
+        name,
+        price,
+        description,
+        image,
+        isFavorite: favorite,
+      };
+      const existingCart = localStorage.getItem('cart');
+      let cart = existingCart ? JSON.parse(existingCart) : [];
+      cart.push(product);
+      localStorage.setItem('cart', JSON.stringify(cart));
+      navigate('/my_cart');
+    }
+  };
+
+  const handleAddToCartConfirmation = () => {
+    setShowAddToCartMessage(false);
+  };
+
+  const handleLoginConfirmation = () => {
+    setShowLoginMessage(false);
   };
 
   return (
-    <div className="bg-white rounded-lg overflow-hidden shadow-md h-[450px] w-[200px]">
+    <div className="bg-white rounded-lg overflow-hidden shadow-md h-[450px] w-[250px]">
       <img className="h-[200px] w-full object-cover" src={image} alt={name} />
       <div className="p-4">
         <h2 className="text-xl font-bold mb-2">{name}</h2>
@@ -24,14 +64,30 @@ const Product = ({ name, price, description, image, isFavorite, onFavoriteChange
           >
             {favorite ? (
               <FaHeart className="h-6 w-6 text-red-500" />
-              
             ) : (
               <FaRegHeart className="h-6 w-6 text-gray-500" />
             )}
           </button>
         </div>
-        <button className='bg-[#ff583e] text-black rounded px-4 py-2 mt-10 w-full'>Add To Cart</button>
+        <button
+          className="bg-[#ff583e] text-black rounded px-4 py-2 mt-10 w-full"
+          onClick={addToCart}
+        >
+          Add To Cart
+        </button>
       </div>
+      {showAddToCartMessage && (
+        <Alert
+          message="Please LogIn/SignUp to buy the product."
+          onConfirm={handleAddToCartConfirmation}
+        />
+      )}
+      {showLoginMessage && (
+        <Alert
+          message="Please LogIn/SignUp for liked and see liked products."
+          onConfirm={handleLoginConfirmation}
+        />
+      )}
     </div>
   );
 };
@@ -46,6 +102,9 @@ Product.propTypes = {
 };
 
 export default Product;
+
+
+
 
 
 

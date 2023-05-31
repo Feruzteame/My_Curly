@@ -12,7 +12,7 @@ let allProducts = [
       price: 9.99,
       description: 'Organic Shampoo for all type of hair',
       image: product1,
-      isFavorite: true,
+      isFavorite: false,
     },
     {
       id: 2,
@@ -52,7 +52,7 @@ let allProducts = [
       price: 9.99,
       description: 'Organic Shampoo for all type of hair',
       image: product1,
-      isFavorite: true,
+      isFavorite: false,
     },
     {
       id: 7,

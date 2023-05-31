@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import { useAuth0 } from "@auth0/auth0-react";
 
 import NavBar from '../components/NavBar'
@@ -13,7 +13,6 @@ import orderHistory from '../icons/order_history.svg'
 
 const Profile = () => {
   const { user, isAuthenticated } = useAuth0();
-  console.log(user)
 
 const timeFormat = (update_time) => {
   const date = new Date(update_time);
@@ -23,9 +22,10 @@ const timeFormat = (update_time) => {
 
   return (
     isAuthenticated && (
+
       <div>
        <NavBar />
-       <p className='overline decoration-[#ff583e] decoration-2 text-3xl mb-4 text-center'>Personal Information</p>
+       <p className='overline decoration-[#ff583e] decoration-2 text-3xl mb-4 text-center mt-10'>Personal Information</p>
        <p className='text-center text-neutral-500 italic text-md'>You can find here all about your personal information, card, order and billing </p>
        <div className='bg-gray-300 w-[60%] flex justify-space-between items-center gap-20 ml-[20%] shadow-md shadow-gray-500 rounded m-10'>
           <div className='flex flex-col gap-4 bg-[#ff583e] p-10'>

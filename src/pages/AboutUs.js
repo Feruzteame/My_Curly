@@ -1,4 +1,5 @@
 import React from 'react';
+
 import NavBar from '../components/NavBar'
 import Footer from '../components/Footer'
 import Team from '../images/ourTeam.png'
@@ -8,8 +9,8 @@ const About = () => {
   return (
     <div className='flex flex-col justify-center'>
       <NavBar />
-      <p className='overline decoration-[#ff583e] decoration-2 text-3xl mb-4 pt-10 text-center'>About Us</p>
-      <p className='text-center text-neutral-500 italic text-md'>Who we are ?</p>
+      <p className='overline decoration-[#ff583e] decoration-2 text-3xl mb-4 pt-10 text-center'>Discover Our mission</p>
+      <p className='text-center text-neutral-500 italic text-md pt-10'>Discover our passion for excellence and commitment to delivering exceptional products and services.</p>
       <div className='flex justify-center items-center gap-10 '>
         <div>
           <img src={Team} alt='team' className='w-[400px] h-[400px]'></img>
