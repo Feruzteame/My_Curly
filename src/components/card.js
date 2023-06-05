@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { useNavigate } from 'react-router-dom';
 
 import { FaHeart, FaRegHeart } from 'react-icons/fa';
 import { useAuth0 } from '@auth0/auth0-react';
+import ModuleComponent from './module';
 
 import Alert from './Alert'; // Import the Alert component
 
@@ -12,7 +12,11 @@ const Product = ({ name, price, description, image, isFavorite, onFavoriteChange
   const { isAuthenticated } = useAuth0();
   const [showLoginMessage, setShowLoginMessage] = useState(false);
   const [showAddToCartMessage, setShowAddToCartMessage] = useState(false);
-  const navigate = useNavigate();
+  const [showModule, setShowModule] = useState(false);
+
+  const closeModule = () => {
+    setShowModule(false);
+  };
 
   const toggleFavorite = () => {
     if (!isAuthenticated) {
@@ -38,8 +42,8 @@ const Product = ({ name, price, description, image, isFavorite, onFavoriteChange
       let cart = existingCart ? JSON.parse(existingCart) : [];
       cart.push(product);
       localStorage.setItem('cart', JSON.stringify(cart));
-      navigate('/my_cart');
     }
+    setShowModule(true);
   };
 
   const handleAddToCartConfirmation = () => {
@@ -70,7 +74,7 @@ const Product = ({ name, price, description, image, isFavorite, onFavoriteChange
           </button>
         </div>
         <button
-          className="bg-[#ff583e] text-black rounded px-4 py-2 mt-10 w-full"
+          className="bg-[#ff583e] text-black rounded px-4 py-2 mt-10 w-full border hover:bg-white hover:text-black hover:border-[#ff583e]"
           onClick={addToCart}
         >
           Add To Cart
@@ -88,6 +92,11 @@ const Product = ({ name, price, description, image, isFavorite, onFavoriteChange
           onConfirm={handleLoginConfirmation}
         />
       )}
+      {showModule &&
+       <ModuleComponent
+       message='product is add to cart successfully'
+       onClose={closeModule}
+       />}
     </div>
   );
 };
@@ -102,10 +111,3 @@ Product.propTypes = {
 };
 
 export default Product;
-
-
-
-
-
-
-

@@ -1,14 +1,20 @@
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
-import React, { useState } from 'react';
-
-import NavBar from '../components/NavBar'
-import Footer from '../components/Footer'
+import NavBar from '../components/NavBar';
+import Footer from '../components/Footer';
 import ConfirmationModal from '../components/ConfirmationModal';
+import ModuleComponent from '../components/module';
 
 const Cart = () => {
   const [cartItems, setCartItems] = useState(JSON.parse(localStorage.getItem('cart')) || []);
   const [showConfirmation, setShowConfirmation] = useState(false);
   const [itemToDelete, setItemToDelete] = useState(null);
+  const [total, setTotal] = useState(0);
+  const [firstTotal, setFirstTotal] = useState(0);
+  const [discount, setDiscount] = useState(0);
+  const [shipping, setShipping] = useState(5);
+  const [showAlert, setShowAlert] = useState(false);
 
   const [quantities, setQuantities] = useState(
     cartItems.reduce((acc, item) => {
@@ -17,107 +23,191 @@ const Cart = () => {
     }, {})
   );
 
+  useEffect(() => {
+    const newTotal = cartItems.reduce((acc, item) => {
+      const quantity = quantities[item.name];
+      const price = item.price;
+      return acc + quantity * price;
+    }, 0);
+
+    const formattedTotal = newTotal.toLocaleString(undefined, {
+      maximumFractionDigits: 2,
+      maximumSignificantDigits: 10,
+    });
+
+    setFirstTotal(formattedTotal);
+  }, [quantities, cartItems]);
+
+  useEffect(() => {
+    const newTotal = cartItems.reduce((acc, item) => {
+      const quantity = quantities[item.name];
+      const price = item.price;
+      return acc + quantity * price;
+    }, 0);
+
+    let discount = 0;
+    if (cartItems.length >= 2 && cartItems.length < 5) {
+      discount = newTotal * 0.05; // 5% discount
+    } else if (cartItems.length >= 5 && cartItems.length < 10) {
+      discount = newTotal * 0.1; // 10% discount
+    } else if (cartItems.length >= 10) {
+      discount = newTotal * 0.15; // 15% discount
+    }
+
+    const minimizedNumber = discount.toFixed(2);
+    setDiscount(minimizedNumber);
+
+    const discountedTotal = newTotal - discount + shipping;
+
+    const formattedTotal = discountedTotal.toLocaleString(undefined, {
+      maximumFractionDigits: 2,
+      maximumSignificantDigits: 10,
+    });
+
+    setTotal(formattedTotal);
+  }, [quantities, cartItems]);
+
   const handleQuantityChange = (name, event) => {
     const newQuantities = { ...quantities, [name]: event.target.value };
     setQuantities(newQuantities);
+
+    const updatedCartItems = cartItems.map((item) => {
+      if (item.name === name) {
+        return { ...item, quantity: event.target.value };
+      }
+      return item;
+    });
+
+    setCartItems(updatedCartItems);
+    localStorage.setItem('cart', JSON.stringify(updatedCartItems));
   };
 
-   const handleRemoveItem = (name) => {
+  const handleRemoveItem = (name) => {
     setItemToDelete(name);
     setShowConfirmation(true);
   };
 
-  const confirmDelete = () => {
-    const newCartItems = cartItems.filter((item) => item.name !== itemToDelete);
-    setCartItems(newCartItems);
-    setQuantities((prevQuantities) => {
-      const newQuantities = { ...prevQuantities };
-      delete newQuantities[itemToDelete];
-      return newQuantities;
-    });
-    localStorage.setItem('cart', JSON.stringify(newCartItems));
+  const handleConfirmRemove = () => {
+    const updatedCartItems = cartItems.filter((item) => item.name !== itemToDelete);
+    setCartItems(updatedCartItems);
+    localStorage.setItem('cart', JSON.stringify(updatedCartItems));
+    setShowConfirmation(false);
+  };
+
+  const handleCancelRemove = () => {
     setShowConfirmation(false);
     setItemToDelete(null);
   };
 
-  const cancelDelete = () => {
-    setShowConfirmation(false);
-    setItemToDelete(null);
+  const handleCheckout = () => {
+    setCartItems([]);
+    localStorage.removeItem('cart');
+    setShowAlert(true);
   };
 
   return (
-    <div className='flex flex-col justify-center items-center'>
-      <NavBar/>
-      <p className='overline decoration-[#ff583e] decoration-2 text-3xl text-center pt-10'>Happy shopping!</p>
-      <p className='text-neutral-500 italic text-md w-[60%] text-center pt-10'>
+    <div className="flex flex-col justify-center items-center">
+      <NavBar />
+      <p className="overline decoration-[#ff583e] decoration-2 text-3xl text-center pt-10">Happy shopping!</p>
+      <p className="text-neutral-500 italic text-md w-[60%] text-center pt-10">
         Once you're satisfied with your choices, you can proceed to checkout and complete your purchase.
       </p>
       {cartItems.length === 0 ? (
-        <p>Your cart is empty.</p>
+        <div className="flex flex-col gap-10 h-[200px] p-10">
+          <p>Your cart is empty.</p>
+          <Link
+            to="/product"
+            className="bg-[#ff583e] rounded w-full px-10 py-2 border hover:bg-white hover:text-black hover:border-[#ff583e]"
+          >
+            Shop Now
+          </Link>
+        </div>
       ) : (
-        <ul className="flex flex-wrap justify-center items-center w-full gap-10 p-20">
-          {cartItems.map((item, index) => (
-            <li key={index} className="bg-white rounded-lg overflow-hidden shadow-md h-[450px] w-[250px]">
-              <img className="h-[200px] w-full object-cover" src={item.image} alt={item.name} />
-              <div className="p-4">
-                <h2 className="text-xl font-bold mb-2">{item.name}</h2>
-                <p className="text-gray-700 text-base mb-4">{item.description}</p>
-                <div className="flex items-center justify-between">
-                  <div className="font-bold text-lg">${item.price.toFixed(2)}</div>
+        <div className="flex justify-center items-start w-full">
+          <ul className="flex flex-col flex-wrap justify-left items-left w-[60%] gap-10 p-20">
+            {cartItems.map((item, index) => (
+              <li key={index} className="flex gap-4 bg-white rounded-lg overflow-hidden shadow-md h-36 w-auto px-2">
+                <img className="h-full w-36 object-cover" src={item.image} alt={item.name} />
+                <div className="flex flex-col gap-4 px-4 py-2">
+                  <h2 className="text-l font-bold">{item.name}</h2>
+                  <p className="text-gray-700 text-base">{item.description}</p>
+                  <div className="flex items-center justify-between gap-10">
+                    <input
+                      type="number"
+                      min="1"
+                      value={quantities[item.name]}
+                      onChange={(event) => handleQuantityChange(item.name, event)}
+                      placeholder="Quantity"
+                      className="w-10 border border-gray-100 p-1 rounded bg-slate-100"
+                    />
+                    <div className="font-bold text-lg">${item.price.toFixed(2)}</div>
+                    <button
+                      className="bg-[#ff583e] text-black rounded px-4 py-2 w-[80%]"
+                      onClick={() => handleRemoveItem(item.name)}
+                    >
+                      Remove
+                    </button>
+                  </div>
                 </div>
-                <input
-                type="number"
-                min="1"
-                value={quantities[item.name]}
-                onChange={(event) => handleQuantityChange(item.name, event)}
-                placeholder="Quantity"
-                />
+              </li>
+            ))}
+          </ul>
+          <div className=" flex flex-col justify-left items-left gap-5 my-20 pb-5 bg-white overflow-hidden shadow-md rounded-lg">
+            <div className="w-[300px]">
+              <div className="bg-slate-100 p-5">
+                <p className="underline font-bold italic">Discount</p>
+                <p>5% for 2 type product</p>
+                <p>10% for 5 type product</p>
+                <p>15% for 10 type product</p>
               </div>
-              <button 
-              className='bg-[#ff583e] text-black rounded px-4 py-2 ml-[10%] w-[80%]'
-              onClick={() => handleRemoveItem(item.name)}>
-                Remove
-              </button>
-            </li>
-          ))}
-        </ul>
+              <div className="flex flex-col justify-center p-2 ">
+                <p className="underline font-bold italic">Order Summary</p>
+                <div className="flex justify-between gap-10 p-2">
+                  <p>Items Total:</p>
+                  <p>${firstTotal}</p>
+                </div>
+                <div className="flex justify-between gap-10 p-2">
+                  <p>Discount:</p>
+                  <p>- ${discount}</p>
+                </div>
+                <div className="flex justify-between gap-10 p-2">
+                  <p>Shipping:</p>
+                  <p>+ ${shipping}</p>
+                </div>
+                <div className="flex justify-between gap-10 p-2 border-t border-black">
+                  <p className="font-bold">Total:</p>
+                  <p className="font-bold">${total}</p>
+                </div>
+                <button
+                  className="bg-[#ff583e] rounded w-full px-10 py-2 mt-4 border hover:bg-white hover:text-black hover:border-[#ff583e]"
+                  onClick={handleCheckout}
+                >
+                  Checkout
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
       )}
+      <Footer />
       {showConfirmation && (
         <ConfirmationModal
-          message="Are you sure you want to remove this item from the cart?"
-          onConfirm={confirmDelete}
-          onCancel={cancelDelete}
+          message='Are You Sure You Need To Remove This Item From The Cart ?'
+          onConfirm={handleConfirmRemove}
+          onCancel={handleCancelRemove}
         />
       )}
-      <Footer/>
+      {showAlert && (
+        <ModuleComponent
+          type="success"
+          message="Checkout successful Done!"
+          onClose={() => setShowAlert(false)}
+        />
+      )}
     </div>
   );
 };
 
-{/* <div className="bg-white rounded-lg overflow-hidden shadow-md h-[450px] w-[250px]">
-      <img className="h-[200px] w-full object-cover" src={image} alt={name} />
-      <div className="p-4">
-        <h2 className="text-xl font-bold mb-2">{name}</h2>
-        <p className="text-gray-700 text-base mb-4">{description}</p>
-        <div className="flex items-center justify-between">
-          <div className="font-bold text-lg">${price.toFixed(2)}</div>
-          <button
-            className="p-2 rounded-full bg-gray-200 hover:bg-gray-300 transition-colors"
-            onClick={toggleFavorite}
-          >
-            {favorite ? (
-              <FaHeart className="h-6 w-6 text-red-500" />
-            ) : (
-              <FaRegHeart className="h-6 w-6 text-gray-500" />
-            )}
-          </button>
-        </div>
-        <button 
-          className='bg-[#ff583e] text-black rounded px-4 py-2 mt-10 w-full'
-          onClick={addToCart}>
-          Add To Cart
-        </button>
-      </div>
-    </div> */}
-
 export default Cart;
+
+

@@ -6,7 +6,7 @@ import Footer from '../components/Footer'
 import services from '../images/vedio.mp4'
 
 const Public = () => {
-  const [isPlaying, setIsPlaying] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(true);
 
   return (
     <div className='flex flex-col gap-0' >
@@ -64,7 +64,7 @@ const Public = () => {
           <p>MyCurly offers you a range of services and individual lessons to care for your curly hair.</p>
           <p>Thanks to our expertise, you will get a unique and custom service for your curly hair, from the recommendation of products to the right cut for your hair texture.</p>
           <p>Our mission, help you understand and rock your curls.</p>
-          <button className='bg-[#ff583e] px-8 py-4 mt-10 rounded w-auto'>Request Here</button>
+          <button className='bg-[#ff583e] px-8 py-4 mt-10 rounded w-auto border hover:bg-white hover:text-black hover:border-[#ff583e]'>Request Here</button>
         </div>
       </div>
       <Footer />

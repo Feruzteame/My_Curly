@@ -27,14 +27,14 @@ const timeFormat = (update_time) => {
        <NavBar />
        <p className='overline decoration-[#ff583e] decoration-2 text-3xl mb-4 text-center mt-10'>Personal Information</p>
        <p className='text-center text-neutral-500 italic text-md'>You can find here all about your personal information, card, order and billing </p>
-       <div className='bg-gray-300 w-[60%] flex justify-space-between items-center gap-20 ml-[20%] shadow-md shadow-gray-500 rounded m-10'>
+       <div className='bg-gray-100 w-[60%] flex justify-space-between items-center gap-20 ml-[20%] shadow-md shadow-gray-500 rounded m-10'>
           <div className='flex flex-col gap-4 bg-[#ff583e] p-10'>
             <img id='img' src={ user.picture } alt={ user.name } className='rounded-full p-4' />
-            <div className='flex items-center gap-1'> <img src={billing} className='w-3 h-3' alt='billing'/> Billing and Payments </div>
-            <div className='flex items-center gap-1'><img src={orderHistory} className='w-3 h-3' alt='order history'/> Order History </div>
-            <div className='flex items-center gap-1'> <img src={giftCard} className='w-3 h-3' alt='gift card'/> Gift cards </div>
-            <div className='flex items-center gap-1'> <img src={discount} className='w-3 h-3' alt='discount'/> Discounts </div>
-            <div className='flex items-center gap-1'> <img src={addCard} className='w-3 h-3' alt='add card'/> card </div>
+            <div className='flex items-center gap-1 hover:underline decoration-black decoration-2'> <img src={billing} className='w-3 h-3' alt='billing'/> Billing and Payments </div>
+            <div className='flex items-center gap-1 hover:underline decoration-black decoration-2'><img src={orderHistory} className='w-3 h-3' alt='order history'/> Order History </div>
+            <div className='flex items-center gap-1 hover:underline decoration-black decoration-2'> <img src={giftCard} className='w-3 h-3' alt='gift card'/> Gift cards </div>
+            <div className='flex items-center gap-1 hover:underline decoration-black decoration-2'> <img src={discount} className='w-3 h-3' alt='discount'/> Discounts </div>
+            <div className='flex items-center gap-1 hover:underline decoration-black decoration-2'> <img src={addCard} className='w-3 h-3' alt='add card'/> card </div>
           </div>
           <div>
             <p><span className='font-bold'>User Name:</span> { user.name }</p>
