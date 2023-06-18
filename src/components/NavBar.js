@@ -128,7 +128,7 @@ const Navbar = () => {
               </Link>
             )}
           </div>
-          <div className='bg-white flex justify-center items-center gap-5 p-6 text-lg'>
+          <div className='bg-white flex justify-center items-center gap-5 p-6 text-lg border-[#ea3d22b1] border-b-2'>
             {isAuthenticated && (
               <Link to="/my_Cart" className="flex">
                 <p className='flex justify-end items-end text-red-400'>{0}</p>

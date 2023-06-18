@@ -62,17 +62,17 @@ const ProductsCard = () => {
   return (
     <div className='pt-10'>
       <div className='flex flex-col justify-center items-center gap-10 m-4'>
-        <p className='overline decoration-[#ff583e] decoration-2 text-3xl text-center'>Discover Our Product Collection</p>
-        <p className='text-center text-neutral-500 italic text-md w-[60%]'>Explore our wide range of high-quality products, designed to enhance your everyday life and exceed your expectations.</p>
+        <p className='overline decoration-[#ff583e] decoration-2 text-3xl text-center'>Our Product Collection</p>
+        <p className='text-center text-neutral-500 italic text-md'>Explore our wide range of high-quality products, designed to enhance your everyday life and exceed your expectations.</p>
         <input
           type="text"
           value={searchQuery}
           onChange={handleSearchChange}
           placeholder="Search By Name..."
-          className=" w-[400px] py-2 px-4 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#ff583e]"
+          className="w-[80%] lg:w-[400px] py-2 px-4 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#ff583e]"
         />
       </div>
-      <div className="flex flex-wrap justify-center items-center w-full gap-10 p-20">
+      <div className="flex flex-wrap justify-center items-center w-full gap-10 p-4">
         {products.map((product) => (
           <div key={product.id}>
             <Product
