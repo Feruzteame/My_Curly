@@ -22,11 +22,10 @@ const timeFormat = (update_time) => {
 
   return (
     isAuthenticated && (
-
-      <div>
+      <div className='h-screen'>
        <NavBar />
        <p className='overline decoration-[#ff583e] decoration-2 text-3xl mb-4 text-center mt-10'>Personal Information</p>
-       <p className='text-center text-neutral-500 italic text-md'>You can find here all about your personal information, card, order and billing </p>
+       <p className='text-center text-neutral-500 italic text-md'>You can find here all about your personal information </p>
        <div className='bg-gray-100 w-[60%] flex justify-space-between items-center gap-20 ml-[20%] shadow-md shadow-gray-500 rounded m-10'>
           <div className='flex flex-col gap-4 bg-[#ff583e] p-10'>
             <img id='img' src={ user.picture } alt={ user.name } className='rounded-full p-4' />

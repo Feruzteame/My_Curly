@@ -55,7 +55,7 @@ const Product = ({ name, price, description, image, isFavorite, onFavoriteChange
   };
 
   return (
-    <div className="bg-white rounded-lg overflow-hidden shadow-md h-[450px] w-[200px]">
+    <div className="bg-white rounded-lg overflow-hidden shadow-md h-auto w-[250px]">
       <img className="h-[200px] w-full object-cover" src={image} alt={name} />
       <div className="p-4">
         <h2 className="text-xl font-bold mb-2">{name}</h2>

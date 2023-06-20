@@ -10,8 +10,8 @@ const About = () => {
     <div className='flex flex-col justify-center'>
       <NavBar />
       <p className='overline decoration-[#ff583e] decoration-2 text-3xl mb-4 pt-10 text-center'>Discover Our mission</p>
-      <p className='text-center text-neutral-500 italic text-md px-5 pt-5'>Discover our passion for excellence and commitment to delivering exceptional products and services.</p>
-      <div className='flex flex-col lg:flex-row justify-center items-center lg:gap-10 p-6 lg:p-0'>
+      <p className='self-center text-center text-neutral-500 italic text-md px-5 pt-5 lg:w-[50%]'>Discover our passion for excellence and commitment to delivering exceptional products and services.</p>
+      <div className='flex flex-col lg:flex-row justify-center items-center lg:gap-10 p-6 lg:p-10'>
         <div>
           <img src={Team} alt='team' className='lg:w-[400px] lg:h-[400px]'></img>
         </div>

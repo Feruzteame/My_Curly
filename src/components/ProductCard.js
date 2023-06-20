@@ -60,10 +60,10 @@ const ProductsCard = () => {
   }, [products]);
 
   return (
-    <div className='pt-10'>
+    <div className='lg:p-20'>
       <div className='flex flex-col justify-center items-center gap-10 m-4'>
         <p className='overline decoration-[#ff583e] decoration-2 text-3xl text-center'>Our Product Collection</p>
-        <p className='text-center text-neutral-500 italic text-md'>Explore our wide range of high-quality products, designed to enhance your everyday life and exceed your expectations.</p>
+        <p className='self-center text-center text-neutral-500 italic text-md lg:w-[50%]'>Explore our wide range of high-quality products, designed to enhance your everyday life and exceed your expectations.</p>
         <input
           type="text"
           value={searchQuery}

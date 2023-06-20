@@ -18,9 +18,9 @@ const Testimonial = () => {
 
   return (
     <div className=''>
-      <div className="flex flex-col lg:gap-10 p-10">
+      <div className="flex flex-col lg:gap-0">
         <h1 className='overline decoration-[#ff583e] decoration-2 text-3xl text-center'>Words of Praise</h1>
-        <p className='text-center text-neutral-500 italic text-md pt-5'>Discover what our satisfied customers have to say about their experience with us.</p>
+        <p className='self-center text-center text-neutral-500 italic text-md pt-5 lg:w-[50%]'>Discover what our satisfied customers have to say about their experience with us.</p>
       </div>
       <div className="flex items-center justify-center p-4 lg:p-2">
         <button
@@ -39,7 +39,7 @@ const Testimonial = () => {
                 <div className='relative flex flex-col justify-center items-center w-[300px] h-auto lg:w-[500px] lg:h-[300px]'>
                   <img src={item.image} alt={'person' + item.id} className='absolute mb-10 top-0 lg:top-[-10%] h-24 w-24 lg:shadow-2xl shadow-black rounded-full border-2 border-solid border-white z-20' ></img>
                   <div className=" bg-white rounded-lg overflow-hidden lg:shadow-2xl shadow-[gray] pt-10 border-2 border-solid border-white h-auto w-full">
-                    <div className='flex flex-col justify-start items-start p-6 lg:px-5 lg:pt-14'>
+                    <div className='flex flex-col justify-start items-start p-12 lg:px-5 lg:pt-14'>
                       <img src={quote} alt='quote' className='h-10 pr-[90%]'></img>
                       <p className='text-justify w-full'>{item.description}</p>
                     </div>
