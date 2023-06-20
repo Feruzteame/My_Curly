@@ -15,7 +15,7 @@ const Public = () => {
       <p className='overline decoration-[#ff583e] decoration-2 text-3xl lg:p-10 p-5 text-center'>How it works ?</p>
       <div className='lg:px-20 h-auto'>
         <div className="flex flex-col lg:flex-row items-center justify-center gap-10 w-full p-10 sm:h-full h-auto">
-          <div className="flex flex-col justify-start items-center gap-6 bg-gray-300 p-6 h-auto min-h-[500px] w-full shadow-md shadow-gray-500 rounded">
+          <div className="flex flex-col justify-start items-center gap-6 bg-gray-100 p-6 h-auto min-h-[500px] w-full shadow-md shadow-gray-500 rounded">
             <p className='flex items-center justify-center text-xl font-bold p-2 bg-[#ff583e] text-black w-12 h-12 rounded-full'>1</p>
             <p className='text-xl font-bold p-2' >DISCOVER OUR SERVICES</p>
             <p className='text-justify'>
@@ -25,7 +25,7 @@ const Public = () => {
               and indulge in the ultimate hair care experience for stunning, healthy locks.
             </p>
           </div>
-          <div className="flex flex-col justify-start items-center gap-6 bg-gray-300 p-6 h-auto min-h-[500px] w-full shadow-md shadow-gray-500 rounded">
+          <div className="flex flex-col justify-start items-center gap-6 bg-gray-100 p-6 h-auto min-h-[500px] w-full shadow-md shadow-gray-500 rounded">
             <p className='flex items-center justify-center text-xl font-bold p-2 bg-[#ff583e] text-black w-12 h-12 rounded-full'>2</p>
             <p className='text-xl font-bold p-2' >GET TO KNOW YOU</p>
             <p className='text-justify'>
@@ -35,7 +35,7 @@ const Public = () => {
               healthy, beautiful hair and embark on a transformative journey of self-discovery with us.
             </p>
           </div>
-          <div className="flex flex-col justify-start items-center gap-6 bg-gray-300 p-6 h-auto min-h-[500px] w-full shadow-md shadow-gray-500 rounded">
+          <div className="flex flex-col justify-start items-center gap-6 bg-gray-100 p-6 h-auto min-h-[500px] w-full shadow-md shadow-gray-500 rounded">
             <p className='flex items-center justify-center text-xl font-bold p-2 bg-[#ff583e] text-black w-12 h-12 rounded-full'>3</p>
             <p className='text-xl font-bold p-2' >BOOK ONLINE</p>
             <p className='text-justify'>
