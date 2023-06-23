@@ -7,6 +7,13 @@ import Image2 from "../images/hero2.jpg";
 import Image3 from '../images/hero3.jpg'
 
 function Hero() {
+
+  function scrollDown() {
+    window.scrollTo({
+      top: window.pageYOffset + 750,
+      behavior: 'smooth',
+    });
+  }
   return (
     <div className="relative ">
       <CarouselProvider
@@ -44,7 +51,7 @@ function Hero() {
       <div className="absolute top-0 left-0 w-full h-full flex justify-center items-center">
         <div className="flex flex-col justify-center items-center lg:gap-6 text-center w-[90%] lg:w-[50%] h-auto rounded-md lg:backdrop-blur-sm bg-black/30 lg:rounded-2xl p-4">
           <p className="text-lg sm:text-md md:text-2xl text-white ">"Life is too short to have boring hair. Embrace your curls and let them be your crown."</p>
-          <button className="inline-block text-lg px-8 py-4 leading-none rounded border border-transparent text-white bg-[#ff583e] hover:bg-white hover:text-black hover:border-[#ff583e]">Get Started</button>
+          <button className="hidden lg:inline-block text-lg px-8 py-4 leading-none rounded border border-transparent text-white bg-[#ff583e] hover:bg-white hover:text-black hover:border-[#ff583e]" onClick={scrollDown}>Get Started</button>
         </div>
       </div>
     </div>

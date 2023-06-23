@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 import NavBar from '../components/NavBar'
 import Hero from '../components/Hero'
@@ -67,7 +68,9 @@ const Public = () => {
             from the recommendation of products to the right cut for your hair texture.
             Our mission, help you understand and rock your curls.
           </p>
-          <button className='bg-[#ff583e] px-8 py-4 mt-10 rounded w-[70%] border hover:bg-white hover:text-black hover:border-[#ff583e]'>Request Here</button>
+          <Link to="/contact" className='text-center bg-[#ff583e] px-8 py-4 mt-10 rounded w-[70%] border hover:bg-white hover:text-black hover:border-[#ff583e]'>
+            <button>Request Here</button>
+          </Link>
         </div>
       </div>
       <Footer />

@@ -58,7 +58,6 @@ const Navbar = () => {
         <div className="hidden lg:flex items-center gap-4">
           {isAuthenticated && (
             <Link to="/my_Cart" className="flex items-center gap-2">
-              <p className="text-red-400">{0}</p>
               <img
                 src={shoppingBasket}
                 alt="Shopping Basket"
