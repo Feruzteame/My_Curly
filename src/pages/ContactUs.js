@@ -37,6 +37,7 @@ const Contact = () => {
           data-netlify='true'
           name='contact'
           className='w-[60%] lg:w-[400px]'>
+            <input type="hidden" name="form-name" value="contact" />
             <div className="mb-4 w-full">
               <label htmlFor="name" className="block font-medium mb-1">
                 Name
