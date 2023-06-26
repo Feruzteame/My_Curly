@@ -30,6 +30,7 @@ const Product = ({ name, price, description, image, isFavorite, onFavoriteChange
   const addToCart = () => {
     if (!isAuthenticated) {
       setShowAddToCartMessage(true);
+      setShowModule(false);
     } else {
       const product = {
         name,
@@ -42,8 +43,8 @@ const Product = ({ name, price, description, image, isFavorite, onFavoriteChange
       let cart = existingCart ? JSON.parse(existingCart) : [];
       cart.push(product);
       localStorage.setItem('cart', JSON.stringify(cart));
+      setShowModule(true);
     }
-    setShowModule(true);
   };
 
   const handleAddToCartConfirmation = () => {

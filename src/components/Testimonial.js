@@ -24,7 +24,7 @@ const Testimonial = () => {
       </div>
       <div className="flex items-center justify-center p-4 lg:p-2">
         <button
-          className="flex items-center justify-center"
+          className="flex items-center justify-center transition duration-300 transform hover:scale-125"
           onClick={handlePrev}
         >
           <img src={leftArrow} alt='leftArrow' className='bg-[#ff583e6f] p-2 rounded-full lg:w-10 lg:h-10'/>
@@ -51,7 +51,7 @@ const Testimonial = () => {
           </div>
         </div>
         <button
-          className="flex items-center justify-center"
+          className="flex items-center justify-center transition duration-300 transform hover:scale-125"
           onClick={handleNext}
         >
           <img  src={rightArrow} alt='rightArrow' className='bg-[#ff583e6f] p-2 rounded-full lg:w-10 lg:h-10'/>

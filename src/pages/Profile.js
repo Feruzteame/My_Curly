@@ -75,7 +75,7 @@ const timeFormat = (update_time) => {
                     <label>CVV</label>
                   </div>
                 </div>
-                <button className='text-center w-[80%] bg-[#ff583e] m-5 p-3 rounded'>
+                <button className='text-center w-[80%] bg-[#ff583e] m-5 p-3 rounded border border-[#ff583e] text-white hover:bg-white hover:text-black hover:border-[#ff583e]'>
                   Add card
                 </button>
               </div>
