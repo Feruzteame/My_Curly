@@ -33,9 +33,10 @@ const Contact = () => {
             <img src={contactImage} alt='mobile' className='w-[400] h-[500px]'></img>
           </div>
           <form
-          action='POST'
+          method='POST'
           data-netlify='true'
-          name='contact'
+          name='myCurly'
+          onSubmit='submit'
           className='w-[60%] lg:w-[400px]'>
             <input type="hidden" name="form-name" value="contact" />
             <div className="mb-4 w-full">
