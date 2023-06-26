@@ -8,7 +8,6 @@ import email from '../icons/email.svg';
 import location from '../icons/location.svg'
 
 const Contact = () => {
-
   return (
     <div className='h-screen'>
       <NavBar />
@@ -33,15 +32,20 @@ const Contact = () => {
           <div className='hidden lg-flex'>
             <img src={contactImage} alt='mobile' className='w-[400] h-[500px]'></img>
           </div>
-          <form className='w-[60%] lg:w-[400px]'>
+          <form
+          action='POST'
+          data-netlify='true'
+          name='contact'
+          className='w-[60%] lg:w-[400px]'>
             <div className="mb-4 w-full">
               <label htmlFor="name" className="block font-medium mb-1">
                 Name
               </label>
               <input
+                name="name"
                 required
                 type="text"
-                id="name"
+                placeholder='Name'
                 className="w-full border-gray-300 border-2 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500 p-2"
               />
             </div>
@@ -50,9 +54,10 @@ const Contact = () => {
                 Email
               </label>
               <input
+                name="email"
                 required
                 type="email"
-                id="email"
+                placeholder='email'
                 className="w-full border-gray-300 border-2 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500 p-2"
               />
             </div>
@@ -61,14 +66,18 @@ const Contact = () => {
                 Message
               </label>
               <textarea
+                name="message"
                 required
-                id="message"
+                placeholder='Message'
                 rows="6"
                 className="w-full border-gray-300 border-2 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500 p-2"
               ></textarea>
+              <div data-netlify-recaptcha='true'></div>
             </div>
             <div className="text-center">
-              <button className='bg-[#ff583e] rounded w-full px-10 py-2 border hover:bg-white hover:text-black hover:border-[#ff583e]'> Send </button>
+              <button className='bg-[#ff583e] rounded w-full px-10 py-2 border hover:bg-white hover:text-black hover:border-[#ff583e]'> 
+                Send
+              </button>
             </div>
           </form>
         </div>
