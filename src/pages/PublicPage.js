@@ -68,7 +68,7 @@ const Public = () => {
             from the recommendation of products to the right cut for your hair texture.
             Our mission, help you understand and rock your curls.
           </p>
-          <Link to="/contact" className='text-center bg-[#ff583e] px-8 py-4 mt-10 rounded w-[70%] border hover:bg-white hover:text-black hover:border-[#ff583e]'>
+          <Link to="/contact" state="false" className='text-center bg-[#ff583e] px-8 py-4 mt-10 rounded w-[70%] border hover:bg-white hover:text-black hover:border-[#ff583e]'>
             <button>Request Here</button>
           </Link>
         </div>

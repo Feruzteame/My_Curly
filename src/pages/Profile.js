@@ -58,12 +58,12 @@ const timeFormat = (update_time) => {
                 </div>
                 <p className="italic mb-4 pb-2 text-neutral-500">Add new card:</p>
                 <div className='flex flex-col-reverse'>
-                  <input type="text" value={ user.name } className='m-3 p-2 lg:w-[350px] rounded'/>
+                  <input type="text" className='m-3 p-2 lg:w-[350px] rounded'/>
                   <label>Cardholder's Name</label>
                 </div>
                 <div className="flex flex-wrap my-4 gap-4">
                   <div className='flex flex-col-reverse'>
-                    <input type="text" value="1234 5678 1234 5678" className='h-8 lg:w-[350px] m-3 p-4 rounded' />
+                    <input type="text" className='h-8 lg:w-[350px] m-3 p-4 rounded' />
                     <label>Card Number</label>
                   </div>
                   <div className='flex flex-col-reverse'>
