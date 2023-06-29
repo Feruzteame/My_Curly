@@ -6,6 +6,7 @@ import Team from '../images/ourTeam.png'
 import Testimonial from '../components/Testimonial'
 
 const About = () => {
+
   return (
     <div className='flex flex-col justify-center'>
       <NavBar />

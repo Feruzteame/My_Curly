@@ -8,9 +8,10 @@ import email from '../icons/email.svg';
 import location from '../icons/location.svg'
 
 const Contact = () => {
+
   return (
     <div className='h-screen'>
-      <NavBar />
+      <NavBar  />
       <div className="flex flex-col gap-10 py-10">
         <h1 className='overline decoration-[#ff583e] decoration-2 text-3xl text-center'>Get in touch</h1>
         <p className='self-center text-center text-neutral-500 italic text-md px-5 lg:w-[50%]'>Feel free to reach out to us through our contact page for any inquiries, feedback, or collaboration opportunities.</p>
@@ -29,7 +30,7 @@ const Contact = () => {
           </div>
         </div>
         <div className='flex justify-center items-center gap-10 w-full'>
-          <div className='hidden lg-flex'>
+          <div className='hidden lg:flex flex-col'>
             <img src={contactImage} alt='mobile' className='w-[400] h-[500px]'></img>
           </div>
           <form

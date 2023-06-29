@@ -7,11 +7,11 @@ import Footer from '../components/Footer'
 const Profile = () => {
   const { user, isAuthenticated } = useAuth0();
 
-const timeFormat = (update_time) => {
-  const date = new Date(update_time);
-  const time = date.toLocaleDateString('en-US', {day: 'numeric', month: 'short', year: 'numeric' });
-  return time
-}
+  const timeFormat = (update_time) => {
+    const date = new Date(update_time);
+    const time = date.toLocaleDateString('en-US', {day: 'numeric', month: 'short', year: 'numeric' });
+    return time
+  }
 
   return (
     isAuthenticated && (

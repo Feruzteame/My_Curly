@@ -11,6 +11,14 @@ import cancel from '../icons/cancel.svg'
 const Navbar = () => {
   const { isAuthenticated, loginWithRedirect, logout, user } = useAuth0();
   const [isOpen, setIsOpen] = useState(false);
+   const [favorites, setFavoritesItems] = useState(JSON.parse(localStorage.getItem('favorites')) || []);
+   const [cartItems, setCartItems] = useState(JSON.parse(localStorage.getItem('cart')) || []);
+
+   // Length of product in the cart
+  const cartItemCount = cartItems.length;
+
+    // Length of product in the cart
+  const favoritesItemCount = favorites.length;
 
   const toggleNavbar = () => {
     setIsOpen(!isOpen);
@@ -57,7 +65,8 @@ const Navbar = () => {
         </div>
         <div className="hidden lg:flex items-center gap-4">
           {isAuthenticated && (
-            <Link to="/my_Cart" className="flex items-center gap-2">
+            <Link to="/my_Cart" className="flex items-center">
+              <p className="text-red-400 mb-5 text-xs">{cartItemCount}</p>
               <img
                 src={shoppingBasket}
                 alt="Shopping Basket"
@@ -67,6 +76,7 @@ const Navbar = () => {
           )}
           {isAuthenticated && (
             <Link to="/my_Favorite" className="flex items-center">
+              <p className="text-red-400 mb-5 text-xs">{favoritesItemCount}</p>
               <img
                 src={favorite}
                 alt="Favorite"
@@ -124,13 +134,14 @@ const Navbar = () => {
                 </Link>
               )}
               {isAuthenticated && (
-                <Link to="/my_Cart" className="flex items-center ">
-                  <p className="text-red-400 mr-2">{0}</p>
+                <Link to="/my_Cart" className="flex items-center">
+                  <p className="text-red-400 mb-5 text-xs">{cartItemCount}</p>
                   <img src={shoppingBasket} alt="shopping_basket" className="w-6 h-6" />
                 </Link>
               )}
               {isAuthenticated && (
-                <Link to="/my_favorite" className="flex items-center ">
+                <Link to="/my_favorite" className="flex items-center">
+                  <p className="text-red-400 mb-5 text-xs">{favoritesItemCount}</p>
                   <img src={favorite} alt="favorite" className="w-6 h-6" />
                 </Link>
               )}

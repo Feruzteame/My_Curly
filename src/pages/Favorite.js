@@ -5,7 +5,7 @@ import FavoriteProductCard from '../components/FavoriteCard'
 import Footer from '../components/Footer'
 
 const ProductPage = () => {
-  
+
   return (
     <div>
       <NavBar />

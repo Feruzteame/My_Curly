@@ -5,7 +5,7 @@ import allProducts from '../Data/product';
 
 const FavoriteProductCard = () => {
   const [products, setProducts] = useState(allProducts);
-
+ 
   // Function to handle changes in favorite status
   const handleFavoriteChange = (productId, isFavorite) => {
     setProducts((prevProducts) =>

@@ -9,6 +9,10 @@ import services from '../images/vedio.mp4'
 const Public = () => {
   const [isPlaying, setIsPlaying] = useState(true);
 
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <div className='flex flex-col gap-0' >
       <NavBar />
@@ -68,7 +72,7 @@ const Public = () => {
             from the recommendation of products to the right cut for your hair texture.
             Our mission, help you understand and rock your curls.
           </p>
-          <Link to="/contact" state="false" className='text-center bg-[#ff583e] px-8 py-4 mt-10 rounded w-[70%] border hover:bg-white hover:text-black hover:border-[#ff583e]'>
+          <Link to="/contact" state="false" onClick={scrollToTop} className='text-center bg-[#ff583e] px-8 py-4 mt-10 rounded w-[70%] border hover:bg-white hover:text-black hover:border-[#ff583e]'>
             <button>Request Here</button>
           </Link>
         </div>
