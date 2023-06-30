@@ -5,9 +5,11 @@ import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
 import ConfirmationModal from '../components/ConfirmationModal';
 import ModuleComponent from '../components/module';
+import Alert from '../components/Alert';
 
 const Cart = () => {
   const [cartItems, setCartItems] = useState(JSON.parse(localStorage.getItem('cart')) || []);
+  const [cards, setCards] = useState(JSON.parse(localStorage.getItem('cards')) || []);
   const [showConfirmation, setShowConfirmation] = useState(false);
   const [itemToDelete, setItemToDelete] = useState(null);
   const [total, setTotal] = useState(0);
@@ -15,6 +17,7 @@ const Cart = () => {
   const [discount, setDiscount] = useState(0);
   const [shipping, setShipping] = useState(5);
   const [showAlert, setShowAlert] = useState(false);
+  const [info, setInfo] = useState(false);
 
   const [quantities, setQuantities] = useState(
     cartItems.reduce((acc, item) => {
@@ -100,9 +103,17 @@ const Cart = () => {
   };
 
   const handleCheckout = () => {
-    setCartItems([]);
-    localStorage.removeItem('cart');
-    setShowAlert(true);
+    if(cards.length === 0){
+      setInfo(true)
+    }else{
+      setCartItems([]);
+      localStorage.removeItem('cart');
+      setShowAlert(true);
+    }
+    
+  };
+  const infoAlertConfirmation = () => {
+    setInfo(false);
   };
 
   return (
@@ -173,7 +184,7 @@ const Cart = () => {
                       placeholder="Quantity"
                       className="w-10 border border-gray-100 p-1 rounded bg-slate-100"
                     />
-                    <div className="font-bold text-lg">${item.price.toFixed(2)}</div>
+                    <div className="font-bold text-lg text-[blue]">${item.price.toFixed(2)}</div>
                     <button
                       className="bg-[#ff583e] text-black rounded px-4 py-2 w-[80%]"
                       onClick={() => handleRemoveItem(item.name)}
@@ -197,19 +208,19 @@ const Cart = () => {
                 <p className="underline font-bold italic">Order Summary</p>
                 <div className="flex justify-between gap-10 p-2">
                   <p>Items Total:</p>
-                  <p>${firstTotal}</p>
+                  <p className='text-[blue]'>${firstTotal}</p>
                 </div>
                 <div className="flex justify-between gap-10 p-2">
                   <p>Discount:</p>
-                  <p>- ${discount}</p>
+                  <p className='text-[blue]'>- ${discount}</p>
                 </div>
                 <div className="flex justify-between gap-10 p-2">
                   <p>Shipping:</p>
-                  <p>+ ${shipping}</p>
+                  <p className='text-[blue]'>+ ${shipping}</p>
                 </div>
                 <div className="flex justify-between gap-10 p-2 border-t border-black">
                   <p className="font-bold">Total:</p>
-                  <p className="font-bold">${total}</p>
+                  <p className="font-bold text-[blue]">${total}</p>
                 </div>
                 <button
                   className="bg-[#ff583e] rounded w-full px-10 py-2 mt-4 border hover:bg-white hover:text-black hover:border-[#ff583e]"
@@ -235,6 +246,12 @@ const Cart = () => {
           type="success"
           message="Checkout successful Done!"
           onClose={() => setShowAlert(false)}
+        />
+      )}
+      {info && (
+        <Alert
+          message="Please Add cards to checkout your product."
+          onConfirm={infoAlertConfirmation}
         />
       )}
     </div>

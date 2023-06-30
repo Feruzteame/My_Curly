@@ -6,6 +6,7 @@ const Alert = ({ message, onConfirm }) => (
     <div className="bg-white rounded p-4">
       <p className="text-center">{message}</p>
       <div className="flex justify-center mt-4">
+        
         <button
           className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
           onClick={onConfirm}

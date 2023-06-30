@@ -19,7 +19,7 @@ const Contact = () => {
                 <p className='text-2xl'>Thanks for Contact Us !</p>
                 <p className='text-lg text-center text-neutral-500'>Your email is sent successfully, we will back you soon.</p>
                 <Link to="/" className="hover:underline decoration-[#ff583e] decoration-2 text-lg text-[#ff583e] "> Back to website</Link>
-            </div>
+             </div>
   }
 
   return (
@@ -71,6 +71,18 @@ const Contact = () => {
                 type="email"
                 placeholder='email'
                 className="w-full border-gray-300 border-2 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500 p-2"
+              />
+            </div>
+            <div className="mb-4">
+              <label htmlFor="phone" className="block mb-2">
+                Phone Number
+              </label>
+              <input
+                type="tel"
+                name="phone"
+                placeholder="Enter your phone number"
+                className="w-full border-gray-300 border-2 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500 p-2"
+                required
               />
             </div>
             <div className="mb-4">
