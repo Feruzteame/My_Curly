@@ -14,12 +14,11 @@ const Contact = () => {
   const [state, handleSubmit] = useForm("mrgwzrgb");
 
   if (state.succeeded) {
-      return <div className='w-full h-auto lg:h-[500px] flex flex-col justify-center items-center gap-5 text-xl'>
+      return <div className='w-full h-auto lg:h-[500px] flex flex-col justify-center items-center gap-5 p-10 text-xl'>
                 <img src={whiteLogo} alt="Logo" className="h-14 w-14" />
                 <p className='text-2xl'>Thanks for Contact Us !</p>
-                <p className='text-lg'>Your email is sent successfully, we will back you soon.</p>
-                <Link to="/" className="hover:underline decoration-[#ff583e] decoration-2 text-lg"> Back to website</Link>
-                <p className='italic text-[#ff583e] text-lg'>Team MyCurly</p>
+                <p className='text-lg text-center text-neutral-500'>Your email is sent successfully, we will back you soon.</p>
+                <Link to="/" className="hover:underline decoration-[#ff583e] decoration-2 text-lg text-[#ff583e] "> Back to website</Link>
             </div>
   }
 
