@@ -4,6 +4,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import NavBar from '../components/NavBar'
 import Footer from '../components/Footer'
 import Delete from '../icons/cancel.svg'
+import ModuleComponent from '../components/module';
 
 const Profile = () => {
   const { user, isAuthenticated } = useAuth0();
@@ -12,6 +13,7 @@ const Profile = () => {
   const [expirationDate, setExpirationDate] = useState('');
   const [cvv, setCVV] = useState('');
   const [cards, setCards] = useState([]);
+  const [showAlert, setShowAlert] = useState(false);
 
   const timeFormat = (update_time) => {
     const date = new Date(update_time);
@@ -26,6 +28,11 @@ const Profile = () => {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
+
+    if (cardholderName.trim() === '' || cardNumber.trim() === '' || expirationDate.trim() === '' || cvv.trim() === '') {
+      setShowAlert(true);
+      return;
+    }
 
     const newCard = {
       cardholderName,
@@ -102,41 +109,43 @@ const Profile = () => {
                   <p className="italic mb-4 pb-2 text-neutral-500">Add new card:</p>
                   <div className='flex flex-col-reverse'>
                     <input
+                    required
                     type="text"
                     value={cardholderName}
                     onChange={(e) => setCardholderName(e.target.value)}
-                    className='m-3 p-2 lg:w-[350px] rounded'/>
+                    className='m-3 p-2 lg:w-[350px] w-[90%] rounded'/>
                     <label>Cardholder's Name</label>
                   </div>
-                  <div className="flex flex-wrap my-4 gap-4">
-                    <div className='flex flex-col-reverse'>
-                      <input 
-                      type="text"
-                      value={cardNumber}
-                      onChange={(e) => setCardNumber(e.target.value)}
-                      className='h-8 lg:w-[350px] m-3 p-4 rounded' />
-                      <label>Card Number</label>
-                    </div>
-                    <div className='flex flex-col-reverse'>
-                      <input id="form5"
-                      type="text"
-                      value={expirationDate}
-                      onChange={(e) => setExpirationDate(e.target.value)}
-                      placeholder='MM/YYYY'
-                      className='h-8 w-[200px] m-3 p-4 rounded' />
-                      <label>Expire Date</label>
-                    </div>
-                    <div className='flex flex-col-reverse'>
-                      <input id="form6"
-                      type="text"
-                      value={cvv}
-                      onChange={(e) => setCVV(e.target.value)}
-                      placeholder="CVV" 
-                      className='h-8 w-[200px] m-3 p-4 rounded' />
-                      <label>CVV</label>
-                    </div>
+                  <div className='flex flex-col-reverse'>
+                    <input
+                    required 
+                    type="text"
+                    value={cardNumber}
+                    onChange={(e) => setCardNumber(e.target.value)}
+                    className='m-3 p-2 lg:w-[350px] w-[90%] rounded' />
+                    <label>Card Number</label>
                   </div>
-                  <button onClick={handleFormSubmit} className='text-center w-[80%] bg-[#ff583e] m-5 p-3 rounded border border-[#ff583e] text-white hover:bg-white hover:text-black hover:border-[#ff583e]'>
+                  <div className='flex flex-col-reverse'>
+                    <input id="form5"
+                    required
+                    type="text"
+                    value={expirationDate}
+                    onChange={(e) => setExpirationDate(e.target.value)}
+                    placeholder='MM/YYYY'
+                    className='m-3 p-2 lg:w-[350px] w-[90%] rounded' />
+                    <label>Expire Date</label>
+                  </div>
+                  <div className='flex flex-col-reverse'>
+                    <input id="form6"
+                    required
+                    type="password"
+                    value={cvv}
+                    onChange={(e) => setCVV(e.target.value)}
+                    placeholder="CVV" 
+                    className='m-3 p-2 lg:w-[350px] w-[90%] rounded' />
+                    <label>CVV</label>
+                  </div>
+                  <button onClick={handleFormSubmit} className='text-center lg:w-[350px] w-[90%] bg-[#ff583e] m-3 p-3 rounded border border-[#ff583e] text-white hover:bg-white hover:text-black hover:border-[#ff583e]'>
                     Add card
                   </button>
                 </form>
@@ -146,6 +155,13 @@ const Profile = () => {
         </div>
        </div>
        <Footer/>
+       {showAlert && (
+        <ModuleComponent
+          type="Error"
+          message="Please fill all the necessary requirement"
+          onClose={() => setShowAlert(false)}
+        />
+      )}
       </div>
     )
   );
