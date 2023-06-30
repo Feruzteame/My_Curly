@@ -140,7 +140,7 @@ const Cart = () => {
                       placeholder="Quantity"
                       className="w-10 border border-gray-100 p-1 rounded bg-slate-100"
                     />
-                    <div className="font-bold text-lg">${item.price.toFixed(2)}</div>
+                    <div className="font-bold text-lg text-[blue]">${item.price.toFixed(2)}</div>
                     <button
                       className="bg-[#ff583e] text-black rounded px-4 py-2 w-[80%]"
                       onClick={() => handleRemoveItem(item.name)}

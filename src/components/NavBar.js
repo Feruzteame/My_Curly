@@ -66,7 +66,7 @@ const Navbar = () => {
         <div className="hidden lg:flex items-center gap-4">
           {isAuthenticated && (
             <Link to="/my_Cart" className="flex items-center">
-              <p className="text-red-400 mb-5 text-xs">{cartItemCount}</p>
+              <p className="mb-5 text-xs text-red-400  font-semibold">{cartItemCount}</p>
               <img
                 src={shoppingBasket}
                 alt="Shopping Basket"
@@ -76,7 +76,7 @@ const Navbar = () => {
           )}
           {isAuthenticated && (
             <Link to="/my_Favorite" className="flex items-center">
-              <p className="text-red-400 mb-5 text-xs">{favoritesItemCount}</p>
+              <p className="mb-5 text-xs text-red-400 font-semibold">{favoritesItemCount}</p>
               <img
                 src={favorite}
                 alt="Favorite"
@@ -135,13 +135,13 @@ const Navbar = () => {
               )}
               {isAuthenticated && (
                 <Link to="/my_Cart" className="flex items-center">
-                  <p className="text-red-400 mb-5 text-xs">{cartItemCount}</p>
+                  <p className="mb-5 text-xs text-red-400 font-semibold">{cartItemCount}</p>
                   <img src={shoppingBasket} alt="shopping_basket" className="w-6 h-6" />
                 </Link>
               )}
               {isAuthenticated && (
                 <Link to="/my_favorite" className="flex items-center">
-                  <p className="text-red-400 mb-5 text-xs">{favoritesItemCount}</p>
+                  <p className="mb-5 text-xs text-red-400 font-semibold">{favoritesItemCount}</p>
                   <img src={favorite} alt="favorite" className="w-6 h-6" />
                 </Link>
               )}
