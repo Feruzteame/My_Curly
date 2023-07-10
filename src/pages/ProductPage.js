@@ -1,8 +1,8 @@
 import React from 'react';
 
-import NavBar from '../components/NavBar'
-import ProductCard from '../components/ProductCard'
-import Footer from '../components/Footer'
+import NavBar from '../components/NavBar';
+import ProductCard from '../components/ProductCard';
+import Footer from '../components/Footer';
 
 const ProductPage = () => {
 
@@ -10,7 +10,7 @@ const ProductPage = () => {
     <div>
       <NavBar />
       <ProductCard />
-      <Footer/>
+      <Footer />
     </div>
   );
 }

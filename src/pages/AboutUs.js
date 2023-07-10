@@ -14,7 +14,7 @@ const About = () => {
       <p className='self-center text-center text-neutral-500 italic text-md px-5 pt-5 lg:w-[50%]'>Discover our passion for excellence and commitment to delivering exceptional products and services.</p>
       <div className='flex flex-col lg:flex-row justify-center items-center lg:gap-10 p-6 lg:p-10'>
         <div>
-          <img src={Team} alt='team' className='lg:w-[400px] lg:h-[400px]'></img>
+          <img src={Team} alt='team' className='lg:w-[450px] lg:h-[400px]'></img>
         </div>
         <div className='flex flex-col gap-4 lg:w-[40%] text-justify mb-10'>
           <p className='pb-4 lg:border-b-2 border-solid border-[#f5f3f3]'>

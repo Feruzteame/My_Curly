@@ -32,7 +32,7 @@ function PaymentForm() {
   return (
     <form onSubmit={handleSubmit}>
       <CardElement />
-      <button type="submit" disabled={!stripe}>
+      <button type='submit' disabled={!stripe}>
         Pay
       </button>
     </form>

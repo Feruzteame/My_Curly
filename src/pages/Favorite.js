@@ -1,8 +1,8 @@
 import React from 'react';
 
-import NavBar from '../components/NavBar'
-import FavoriteProductCard from '../components/FavoriteCard'
-import Footer from '../components/Footer'
+import NavBar from '../components/NavBar';
+import FavoriteProductCard from '../components/FavoriteCard';
+import Footer from '../components/Footer';
 
 const ProductPage = () => {
 
@@ -10,7 +10,7 @@ const ProductPage = () => {
     <div>
       <NavBar />
       <FavoriteProductCard />
-      <Footer/>
+      <Footer />
     </div>
   );
 }

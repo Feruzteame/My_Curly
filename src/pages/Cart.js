@@ -104,56 +104,56 @@ const Cart = () => {
 
   const handleCheckout = () => {
     if(cards.length === 0){
-      setInfo(true)
+      setInfo(true);
     }else{
       setCartItems([]);
       localStorage.removeItem('cart');
       setShowAlert(true);
     }
-    
   };
+
   const infoAlertConfirmation = () => {
     setInfo(false);
   };
 
   return (
-    <div className="flex flex-col justify-center items-center">
+    <div className='flex flex-col justify-center items-center'>
       <NavBar />
-      <p className="overline decoration-[#ff583e] decoration-2 text-3xl text-center pt-10">Happy shopping!</p>
-      <p className="text-center text-neutral-500 italic text-md px-5 pt-5">
+      <p className='overline decoration-[#ff583e] decoration-2 text-3xl text-center pt-10'>Happy shopping!</p>
+      <p className='text-center text-neutral-500 italic text-md px-5 pt-5'>
         Once you're satisfied with your choices, you can proceed to checkout and complete your purchase.
       </p>
       {cartItems.length === 0 ? (
-        <div className="flex flex-col gap-10 h-[200px] p-10">
+        <div className='flex flex-col gap-10 h-[200px] p-10'>
           <p>Your cart is empty.</p>
           <Link
-            to="/product"
-            className="bg-[#ff583e] rounded w-full px-10 py-2 border hover:bg-white hover:text-black hover:border-[#ff583e]"
+            to='/product'
+            className='bg-[#ff583e] rounded w-full px-10 py-2 border hover:bg-white hover:text-black hover:border-[#ff583e]'
           >
             Shop Now
           </Link>
         </div>
       ) : (
-        <div className="flex flex-col-reverse lg:flex-row justify-center lg:items-start items-center w-full p-8">
-          <ul className="hidden lg:flex flex-col flex-wrap justify-left items-left w-auto gap-10 p-20">
+        <div className='flex flex-col-reverse lg:flex-row justify-center lg:items-start items-center w-full p-8'>
+          <ul className='hidden lg:flex flex-col flex-wrap justify-left items-left w-auto gap-10 p-20'>
             {cartItems.map((item, index) => (
-              <li key={index} className="flex gap-4 bg-white rounded-lg overflow-hidden shadow-md h-36 w-auto px-2">
-                <img className="h-full w-36 object-cover" src={item.image} alt={item.name} />
-                <div className="flex flex-col gap-4 px-4 py-2">
-                  <h2 className="text-l font-bold">{item.name}</h2>
-                  <p className="text-gray-700 text-base">{item.description}</p>
-                  <div className="flex items-center justify-between gap-10">
+              <li key={index} className='flex gap-4 bg-white rounded-lg overflow-hidden shadow-md h-36 w-auto px-2'>
+                <img className='h-full w-36 object-cover' src={item.image} alt={item.name} />
+                <div className='flex flex-col gap-4 px-4 py-2'>
+                  <h2 className='text-l font-bold'>{item.name}</h2>
+                  <p className='text-gray-700 text-base'>{item.description}</p>
+                  <div className='flex items-center justify-between gap-10'>
                     <input
-                      type="number"
-                      min="1"
+                      type='number'
+                      min='1'
                       value={quantities[item.name]}
                       onChange={(event) => handleQuantityChange(item.name, event)}
-                      placeholder="Quantity"
-                      className="w-10 border border-gray-100 p-1 rounded bg-slate-100"
+                      placeholder='Quantity'
+                      className='w-10 border border-gray-100 p-1 rounded bg-slate-100'
                     />
-                    <div className="font-bold text-lg text-[blue]">${item.price.toFixed(2)}</div>
+                    <div className='font-bold text-lg text-[blue]'>${item.price.toFixed(2)}</div>
                     <button
-                      className="bg-[#ff583e] text-black rounded px-4 py-2 w-[80%]"
+                      className='bg-[#ff583e] text-black rounded px-4 py-2 w-[80%]'
                       onClick={() => handleRemoveItem(item.name)}
                     >
                       Remove
@@ -164,29 +164,29 @@ const Cart = () => {
             ))}
           </ul>
           {/* mobile version */}
-          <ul className="flex lg:hidden flex-col flex-wrap justify-left items-left w-auto h-auto gap-10">
+          <ul className='flex lg:hidden flex-col flex-wrap justify-left items-left w-auto h-auto gap-10'>
             {cartItems.map((item, index) => (
-              <li key={index} className="flex gap-4 bg-white rounded-lg overflow-hidden shadow-md h-full w-auto px-2">
-               <div className="flex flex-col gap-4 px-4 py-2">
+              <li key={index} className='flex gap-4 bg-white rounded-lg overflow-hidden shadow-md h-full w-auto px-2'>
+                <div className='flex flex-col gap-4 px-4 py-2'>
                   <div className='flex gap-4'>
-                    <img className="w-20 h-20 object-cover" src={item.image} alt={item.name} />
+                    <img className='w-20 h-20 object-cover' src={item.image} alt={item.name} />
                     <div className='flex flex-col'>
-                      <h2 className="text-l font-bold">{item.name}</h2>
-                      <p className="text-gray-700 text-base">{item.description}</p>
+                      <h2 className='text-l font-bold'>{item.name}</h2>
+                      <p className='text-gray-700 text-base'>{item.description}</p>
                     </div>
                   </div>
-                  <div className="flex items-center justify-between gap-10">
+                  <div className='flex items-center justify-between gap-10'>
                     <input
-                      type="number"
-                      min="1"
+                      type='number'
+                      min='1'
                       value={quantities[item.name]}
                       onChange={(event) => handleQuantityChange(item.name, event)}
-                      placeholder="Quantity"
-                      className="w-10 border border-gray-100 p-1 rounded bg-slate-100"
+                      placeholder='Quantity'
+                      className='w-10 border border-gray-100 p-1 rounded bg-slate-100'
                     />
-                    <div className="font-bold text-lg text-[blue]">${item.price.toFixed(2)}</div>
+                    <div className='font-bold text-lg text-[blue]'>${item.price.toFixed(2)}</div>
                     <button
-                      className="bg-[#ff583e] text-black rounded px-4 py-2 w-[80%]"
+                      className='bg-[#ff583e] text-black rounded px-4 py-2 w-[80%]'
                       onClick={() => handleRemoveItem(item.name)}
                     >
                       Remove
@@ -196,34 +196,34 @@ const Cart = () => {
               </li>
             ))}
           </ul>
-          <div className=" flex flex-col justify-left items-left gap-5 my-10 lg:my-20 pb-5 bg-white overflow-hidden shadow-md rounded-lg">
-            <div className="w-[300px]">
-              <div className="bg-slate-100 p-5">
-                <p className="underline font-bold italic">Discount</p>
+          <div className='flex flex-col justify-left items-left gap-5 my-10 lg:my-20 pb-5 bg-white overflow-hidden shadow-md rounded-lg'>
+            <div className='w-[300px]'>
+              <div className='bg-slate-100 p-5'>
+                <p className='underline font-bold italic'>Discount</p>
                 <p>5% for 2 type product</p>
                 <p>10% for 5 type product</p>
                 <p>15% for 10 type product</p>
               </div>
-              <div className="flex flex-col justify-center p-2 ">
-                <p className="underline font-bold italic">Order Summary</p>
-                <div className="flex justify-between gap-10 p-2">
+              <div className='flex flex-col justify-center p-2'>
+                <p className='underline font-bold italic'>Order Summary</p>
+                <div className='flex justify-between gap-10 p-2'>
                   <p>Items Total:</p>
                   <p className='text-[blue]'>${firstTotal}</p>
                 </div>
-                <div className="flex justify-between gap-10 p-2">
+                <div className='flex justify-between gap-10 p-2'>
                   <p>Discount:</p>
                   <p className='text-[blue]'>- ${discount}</p>
                 </div>
-                <div className="flex justify-between gap-10 p-2">
+                <div className='flex justify-between gap-10 p-2'>
                   <p>Shipping:</p>
                   <p className='text-[blue]'>+ ${shipping}</p>
                 </div>
-                <div className="flex justify-between gap-10 p-2 border-t border-black">
-                  <p className="font-bold">Total:</p>
-                  <p className="font-bold text-[blue]">${total}</p>
+                <div className='flex justify-between gap-10 p-2 border-t border-black'>
+                  <p className='font-bold'>Total:</p>
+                  <p className='font-bold text-[blue]'>${total}</p>
                 </div>
                 <button
-                  className="bg-[#ff583e] rounded w-full px-10 py-2 mt-4 border hover:bg-white hover:text-black hover:border-[#ff583e]"
+                  className='bg-[#ff583e] rounded w-full px-10 py-2 mt-4 border hover:bg-white hover:text-black hover:border-[#ff583e]'
                   onClick={handleCheckout}
                 >
                   Checkout
@@ -243,14 +243,14 @@ const Cart = () => {
       )}
       {showAlert && (
         <ModuleComponent
-          type="success"
-          message="Checkout successful Done!"
+          type='success'
+          message='Checkout successful Done!'
           onClose={() => setShowAlert(false)}
         />
       )}
       {info && (
         <Alert
-          message="Please Add cards to checkout your product."
+          message='Please Add cards to checkout your product.'
           onConfirm={infoAlertConfirmation}
         />
       )}
@@ -259,5 +259,6 @@ const Cart = () => {
 };
 
 export default Cart;
+
 
 

@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import Product from './card';
 import allProducts from '../Data/product';
 
@@ -12,19 +12,19 @@ const ProductsCard = () => {
         product.id === productId
           ? { ...product, isFavorite: isFavorite && !product.isFavorite }
           : product
-        )
-      );
+      )
+    );
   };
 
-  const isFavorite = (product_id => {
-    const favorite_products = localStorage.getItem('favorites');
-    if (favorite_products) {
-      const product_ids = JSON.parse(favorite_products);
+  const isFavorite = (product_id) => {
+    const favoriteProducts = localStorage.getItem('favorites');
+    if (favoriteProducts) {
+      const productIds = JSON.parse(favoriteProducts);
 
-      return product_ids.includes(product_id);
+      return productIds.includes(product_id);
     }
-    return false
-  });
+    return false;
+  };
 
   const handleSearchChange = (event) => {
     const inputValue = event.target.value;
@@ -36,7 +36,7 @@ const ProductsCard = () => {
     setProducts(filteredProducts);
   };
 
-   useEffect(() => {
+  useEffect(() => {
     // Retrieve favorited products from local storage
     const storedFavorites = localStorage.getItem('favorites');
     if (storedFavorites) {
@@ -62,17 +62,17 @@ const ProductsCard = () => {
   return (
     <div className='lg:p-20'>
       <div className='flex flex-col justify-center items-center gap-10 m-4'>
-        <p className='overline decoration-[#ff583e] decoration-2 text-3xl text-center'>Our Product Collection</p>
+        <p className='overline decoration-[#ff583e] decoration-2 text-3xl text-center pt-10 lg:pt-0'>Our Product Collection</p>
         <p className='self-center text-center text-neutral-500 italic text-md lg:w-[50%]'>Explore our wide range of high-quality products, designed to enhance your everyday life and exceed your expectations.</p>
         <input
-          type="text"
+          type='text'
           value={searchQuery}
           onChange={handleSearchChange}
-          placeholder="Search By Name..."
-          className="w-[80%] lg:w-[400px] py-2 px-4 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#ff583e]"
+          placeholder='Search By Name...'
+          className='w-[80%] lg:w-[400px] py-2 px-4 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#ff583e]'
         />
       </div>
-      <div className="flex flex-wrap justify-center items-center w-full gap-10 p-4">
+      <div className='flex flex-wrap justify-center items-center w-full gap-10 p-4'>
         {products.map((product) => (
           <div key={product.id}>
             <Product
@@ -80,7 +80,7 @@ const ProductsCard = () => {
               price={product.price}
               description={product.description}
               image={product.image}
-              isFavorite={isFavorite(product.id)} 
+              isFavorite={isFavorite(product.id)}
               onFavoriteChange={(isFavorite) =>
                 handleFavoriteChange(product.id, isFavorite)
               }

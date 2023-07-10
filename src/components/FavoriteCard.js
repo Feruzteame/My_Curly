@@ -44,13 +44,13 @@ const FavoriteProductCard = () => {
 
   return (
     <div>
-      <div className='flex flex-col justify-center items-center gap-10 w-full pt-10'>
+      <div className='flex flex-col justify-center items-center w-full pt-10'>
         <p className='overline decoration-[#ff583e] decoration-2 text-3xl'>Your Wish List</p>
         <p className='text-center text-neutral-500 italic text-md pt-5 m-5 lg:w-[60%]'>
           This is where you can save and keep track of all your favorite products as a valued customer. Here, you can create a personalized collection of your most-loved items.
         </p>
       </div>
-      <div className="flex flex-wrap justify-center items-center w-full gap-10 p-10">
+      <div className='flex flex-wrap justify-center items-center w-full gap-10 p-10'>
         {favoriteProducts.length <= 0 ? (
           <div className='flex flex-col gap-10 h-[200px]'>
             <p>You do not have any favorite product.</p>
@@ -80,3 +80,4 @@ const FavoriteProductCard = () => {
 };
 
 export default FavoriteProductCard;
+
